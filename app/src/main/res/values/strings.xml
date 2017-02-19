@@ -6,4 +6,16 @@
     <string name="plants">Plants</string>
     <string name="energy">Energy</string>
     <string name="heat">Heat</string>
+    <string name="ok">Proceed!</string>
+    <string name="cancel">Cancel</string>
+    <string name="dialog_generation_message">Are you sure you want to proceed to the next generation? You cannot undo this.</string>
+    <string name="dialog_generation_title">Advance Generation</string>
+    <string name="dialog_greenery_message">Are you sure you want to produce one greenery tile?</string>
+    <string name="dialog_greenery_title">Add Greenery</string>
+    <string name="dialog_heat_message">Are you sure you wish to spend heat to increase the global temperature?</string>
+    <string name="dialog_heat_title">Warm Planet</string>
+    <string name="standard_project">Standard Project</string>
+    <string name="dialog_ocean_title">Create Ocean</string>
+    <string name="dialog_ocean_message">Are you sure you want to create an ocean? Select standard project only if you are spending the normal 18 mega credits. Click special project otherwise.</string>
+    <string name="special_project">Special Project</string>
 </resources>

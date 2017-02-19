@@ -16,6 +16,7 @@
 
 
     <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:id="@+id/hpicker_plants_values"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -24,14 +25,16 @@
         app:mode="currentValue" />
 
     <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:id="@+id/hpicker_plants_production"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:currentValue="0"
-        app:minValue="0"></com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker>
+        app:minValue="0"/>
 
 
     <Button
+        android:id="@+id/button_plant_conversion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

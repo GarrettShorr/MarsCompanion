@@ -1,9 +1,14 @@
 package com.garrettshorr.marscompanion.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by g on 2/18/2017.
  */
-public class MarsResource {
+public class MarsResource implements Parcelable, Serializable {
     private int minProduction;
     private String name;
     private int currentValue;
@@ -83,4 +88,37 @@ public class MarsResource {
         this.currentProduction = currentProduction;
     }
     //endregion
+
+    protected MarsResource(Parcel in) {
+        minProduction = in.readInt();
+        name = in.readString();
+        currentValue = in.readInt();
+        currentProduction = in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(minProduction);
+        dest.writeString(name);
+        dest.writeInt(currentValue);
+        dest.writeInt(currentProduction);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<MarsResource> CREATOR = new Parcelable.Creator<MarsResource>() {
+        @Override
+        public MarsResource createFromParcel(Parcel in) {
+            return new MarsResource(in);
+        }
+
+        @Override
+        public MarsResource[] newArray(int size) {
+            return new MarsResource[size];
+        }
+    };
 }

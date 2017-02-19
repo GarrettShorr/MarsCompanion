@@ -13,6 +13,7 @@
         android:textStyle="bold"
         android:layout_gravity="center"/>
     <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:id="@+id/hpicker_heat_values"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:minValue="0"
@@ -20,6 +21,7 @@
         app:currentValue="0"
         android:layout_gravity="center"/>
     <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:id="@+id/hpicker_heat_production"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:minValue="0"
@@ -28,6 +30,7 @@
     </com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker>
 
     <Button
+        android:id="@+id/button_heat_conversion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

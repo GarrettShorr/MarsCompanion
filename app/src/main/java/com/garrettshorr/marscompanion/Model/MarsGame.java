@@ -1,9 +1,14 @@
 package com.garrettshorr.marscompanion.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by g on 2/18/2017.
  */
-public class MarsGame {
+public class MarsGame implements Parcelable, Serializable {
     private MarsResource[] resources;
     private int cities; //TODO: come up with delineation of martian cities vs all cities
     private int oceans;
@@ -132,5 +137,54 @@ public class MarsGame {
         this.titaniumConversion = titaniumConversion;
     }
 
+
+
     //endregion
+
+    protected MarsGame(Parcel in) {
+        cities = in.readInt();
+        oceans = in.readInt();
+        temperature = in.readInt();
+        oxygen = in.readInt();
+        terraformingRating = in.readInt();
+        generation = in.readInt();
+        heatConversion = in.readInt();
+        plantConversion = in.readInt();
+        steelConversion = in.readInt();
+        titaniumConversion = in.readInt();
+        in.readTypedArray(resources, MarsResource.CREATOR);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(cities);
+        dest.writeInt(oceans);
+        dest.writeInt(temperature);
+        dest.writeInt(oxygen);
+        dest.writeInt(terraformingRating);
+        dest.writeInt(generation);
+        dest.writeInt(heatConversion);
+        dest.writeInt(plantConversion);
+        dest.writeInt(steelConversion);
+        dest.writeInt(titaniumConversion);
+        dest.writeTypedArray(resources, flags);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<MarsGame> CREATOR = new Parcelable.Creator<MarsGame>() {
+        @Override
+        public MarsGame createFromParcel(Parcel in) {
+            return new MarsGame(in);
+        }
+
+        @Override
+        public MarsGame[] newArray(int size) {
+            return new MarsGame[size];
+        }
+    };
 }

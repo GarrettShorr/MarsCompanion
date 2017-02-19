@@ -156,4 +156,44 @@ public class HorizontalNumberPicker extends LinearLayout {
         if(!buttonPlus.isEnabled())
             buttonPlus.setEnabled(true);
     }
+
+    public void add(int value) {
+        currentValue += value;
+    }
+
+    public int getMinValue() {
+        return minValue;
+    }
+
+    public void setMinValue(int minValue) {
+        this.minValue = minValue;
+    }
+
+    public int getMaxValue() {
+        return maxValue;
+    }
+
+    public void setMaxValue(int maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public int getCurrentValue() {
+        return currentValue;
+    }
+
+    public void setCurrentValue(int currentValue) {
+        this.currentValue = currentValue;
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+    }
+
+    public void updateText() {
+        textValue.setText(currentValue+"");
+    }
 }

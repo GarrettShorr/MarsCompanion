@@ -18,6 +18,7 @@
             android:src="@drawable/thermometer"
             android:layout_gravity="center_vertical"/>
         <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+            android:id="@+id/hpicker_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -34,13 +35,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="0dp">
-        <!--Temp-->
+        <!--Oceans-->
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ocean"
             android:layout_gravity="center_vertical"/>
         <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+            android:id="@+id/hpicker_oceans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -57,13 +59,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="0dp">
-        <!--Temp-->
+        <!--Oxygen-->
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/oxygen"
             android:layout_gravity="center_vertical"/>
         <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+            android:id="@+id/hpicker_oxygen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

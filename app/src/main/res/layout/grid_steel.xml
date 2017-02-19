@@ -13,6 +13,7 @@
         android:textStyle="bold"
         android:layout_gravity="center"/>
     <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:id="@+id/hpicker_steel_values"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:minValue="0"
@@ -20,6 +21,7 @@
         app:currentValue="0"
         android:layout_gravity="center"/>
     <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:id="@+id/hpicker_steel_production"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:minValue="0"

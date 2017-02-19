@@ -10,6 +10,7 @@
         android:src="@drawable/mars"
         android:layout_gravity="center"/>
     <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:id="@+id/hpicker_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:minValue="0"

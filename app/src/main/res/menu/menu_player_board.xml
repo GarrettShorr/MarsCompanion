@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_next_generation"
+        android:icon="@drawable/forward"
+        android:orderInCategory="100"
+        android:title="Advance Generation"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_ocean"
+        android:icon="@drawable/ocean"
+        android:orderInCategory="90"
+        android:title="Build Ocean"
+        app:showAsAction="ifRoom" />
 
 </menu>
