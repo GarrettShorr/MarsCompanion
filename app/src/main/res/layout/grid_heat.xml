@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/heat"
+        android:textColor="#B20000"
+        android:textSize="@dimen/text_extra_large"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+    <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:minValue="0"
+        app:mode="currentValue"
+        app:currentValue="0"
+        android:layout_gravity="center"/>
+    <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:minValue="0"
+        app:currentValue="0"
+        android:layout_gravity="center">
+    </com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:drawableLeft="@drawable/heat"
+        android:drawableRight="@drawable/thermometer_small"
+        android:gravity="center"
+        android:minHeight="32dp"
+        android:minWidth="0dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:text=" x8 to" />
+
+    <!--<include
+        layout="@layout/horizontal_num_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/hor_num_pick_heat" />-->
+</LinearLayout>

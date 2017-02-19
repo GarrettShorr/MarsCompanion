@@ -11,6 +11,10 @@ public class MarsGame {
     private int oxygen;
     private int terraformingRating;
     private int generation;
+    private int heatConversion;
+    private int plantConversion;
+    private int steelConversion;
+    private int titaniumConversion;
 
     public MarsGame() {
         MarsResource megaCredits = new MarsResource(-5,"MegaCredits",0,0);
@@ -26,6 +30,10 @@ public class MarsGame {
         oxygen = 0;
         terraformingRating = 20;
         generation = 0;
+        heatConversion = 8;
+        plantConversion = 8;
+        steelConversion = 2;
+        titaniumConversion = 3;
     }
 
     public void nextGeneration() {
@@ -90,6 +98,38 @@ public class MarsGame {
 
     public void setGeneration(int generation) {
         this.generation = generation;
+    }
+
+    public int getHeatConversion() {
+        return heatConversion;
+    }
+
+    public void setHeatConversion(int heatConversion) {
+        this.heatConversion = heatConversion;
+    }
+
+    public int getPlantConversion() {
+        return plantConversion;
+    }
+
+    public void setPlantConversion(int plantConversion) {
+        this.plantConversion = plantConversion;
+    }
+
+    public int getSteelConversion() {
+        return steelConversion;
+    }
+
+    public void setSteelConversion(int steelConversion) {
+        this.steelConversion = steelConversion;
+    }
+
+    public int getTitaniumConversion() {
+        return titaniumConversion;
+    }
+
+    public void setTitaniumConversion(int titaniumConversion) {
+        this.titaniumConversion = titaniumConversion;
     }
 
     //endregion

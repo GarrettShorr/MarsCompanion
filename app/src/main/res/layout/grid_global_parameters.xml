@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="0dp">
+        <!--Temp-->
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/thermometer"
+            android:layout_gravity="center_vertical"/>
+        <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:mode="temperature"
+            app:minValue="-30"
+            app:maxValue="8"
+            app:currentValue="-30"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="0dp">
+        <!--Temp-->
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ocean"
+            android:layout_gravity="center_vertical"/>
+        <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:mode="oceans"
+            app:minValue="0"
+            app:maxValue="9"
+            app:currentValue="0"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="0dp">
+        <!--Temp-->
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/oxygen"
+            android:layout_gravity="center_vertical"/>
+        <com.garrettshorr.marscompanion.Widgets.HorizontalNumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:mode="oxygen"
+            app:minValue="0"
+            app:maxValue="14"
+            app:currentValue="0"/>
+
+    </LinearLayout>
+</LinearLayout>

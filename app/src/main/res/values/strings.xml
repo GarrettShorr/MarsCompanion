@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">MarsCompanion</string>
+    <string name="app_name">Terraforming Mars Companion</string>
+    <string name="megacredits">MegaCredits</string>
+    <string name="steel">Steel</string>
+    <string name="titanium">Titanium</string>
+    <string name="plants">Plants</string>
+    <string name="energy">Energy</string>
+    <string name="heat">Heat</string>
 </resources>
