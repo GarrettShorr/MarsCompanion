@@ -2,16 +2,19 @@ package com.garrettshorr.marscompanion.Presenter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.garrettshorr.marscompanion.Model.Corporation;
 import com.garrettshorr.marscompanion.Model.MarsGame;
 import com.garrettshorr.marscompanion.Model.MarsResource;
 import com.garrettshorr.marscompanion.R;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private String fileName = "savedMarsBoard";
     public static final String[] RESOURCE_NAMES
             = {"Mega Credits", "Steel", "Titanium", "Plants", "Energy", "Heat"};
+    private boolean firstRun;
 
 
     @Override
@@ -47,10 +51,62 @@ public class MainActivity extends AppCompatActivity {
         wireWidgets();
         setListeners();
         game = new MarsGame();
-
         //TODO: Get the attributes for the MarsGame from the Intent
+        Intent intent = getIntent();
+        boolean resume = intent.getBooleanExtra(StartActivity.EXTRA_RESUME, false);
+        Corporation corp = null;
+        if(!resume) {
+            //corp = intent.getParcelableExtra(StartActivity.EXTRA_CORPORATION);
+            resetAll();
+            game.setHeatConversion(intent.getIntExtra(StartActivity.EXTRA_HEAT_CONV,0));
+            game.setPlantConversion(intent.getIntExtra(StartActivity.EXTRA_PLANT_CONV,0));
+            game.setSteelConversion(intent.getIntExtra(StartActivity.EXTRA_STEEL_CONV,0));
+            game.setTitaniumConversion(intent.getIntExtra(StartActivity.EXTRA_TITANIUM_CONV,0));
+            int[] initialValues = intent.getIntArrayExtra(StartActivity.EXTRA_INITIAL_VALS);
+            int[] initialProduction = intent.getIntArrayExtra(StartActivity.EXTRA_INITIAL_PROD);
+            for(int i = 0; i < 6; i++) {
+                Log.d("LOOK AT ME:", "onCreate: " + initialValues[i]);
+                mainResourceV[i].setCurrentValue(initialValues[i]);
+                mainResourceV[i].updateText();
+                mainResourceP[i].setCurrentValue(initialProduction[i]);
+                mainResourceP[i].updateText();
+            }
+            plantConversion.setText("X"+game.getPlantConversion()+" TO");
+            heatConversion.setText(" X"+game.getHeatConversion()+" TO");
+            updateAllText();
+            firstRun=true;
+
+        }
 
         //TODO: Set the values of all the horizontal number pickers based on
+    }
+
+    private void updateAllText() {
+        globalOxygen.updateText();
+        globalTemp.updateText();
+        globalOceans.updateText();
+        for(HorizontalNumberPicker h : mainResourceV) {
+            h.updateText();
+        }
+        for(HorizontalNumberPicker h : mainResourceP) {
+            h.updateText();
+        }
+        rating.updateText();
+    }
+
+    private void resetAll() {
+        globalTemp.setCurrentValue(-30);
+        globalTemp.updateText();
+        globalOceans.setCurrentValue(0);
+        globalOceans.updateText();
+        globalOxygen.setCurrentValue(0);
+        globalOxygen.updateText();
+        rating.setCurrentValue(20);
+        rating.updateText();
+        game.setOxygen(0);
+        game.setTemperature(-30);
+        game.setOceans(0);
+        game.setTerraformingRating(20);
     }
 
     private void setListeners() {
@@ -280,35 +336,63 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
                 return true;
+            case R.id.menu_spend_money:
+                spendMoneyDialog();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    private void spendMoneyDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+        View layout = inflater.inflate(R.layout.alert_dialog_spend_money, null);
+        builder.setView(layout);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //buildHeat();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        builder.setMessage("Calculate the amount you want to spend below: ")
+                .setTitle("Spending MegaCredits");
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        FileInputStream fis = null;
-        try {
-            fis = openFileInput(fileName);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ObjectInputStream is = null;
-        if(fis != null) {
+        if(!firstRun) {
+            FileInputStream fis = null;
             try {
-                is = new ObjectInputStream(fis);
-                game = (MarsGame) is.readObject();
-                is.close();
-                fis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+                fis = openFileInput(fileName);
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            ObjectInputStream is = null;
+            if (fis != null) {
+                try {
+                    is = new ObjectInputStream(fis);
+                    game = (MarsGame) is.readObject();
+                    is.close();
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            updateGameFromFile();
+            Log.d("LOOK AT ME", "onResume: UPDATED?");
         }
-        updateGameFromFile();
-        Log.d("LOOK AT ME", "onResume: UPDATED?");
+        firstRun = false;
     }
 
     private void updateGameFromFile() {

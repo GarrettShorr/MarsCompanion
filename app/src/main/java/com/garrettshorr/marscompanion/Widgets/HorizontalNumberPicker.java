@@ -195,5 +195,20 @@ public class HorizontalNumberPicker extends LinearLayout {
 
     public void updateText() {
         textValue.setText(currentValue+"");
+
+        //update enabling of buttons
+        if(currentValue > minValue && !buttonMinus.isEnabled()) {
+            buttonMinus.setEnabled(true);
+        }
+        else if(currentValue == minValue && buttonMinus.isEnabled()) {
+            buttonMinus.setEnabled(false);
+        }
+
+        if(currentValue < maxValue && !buttonPlus.isEnabled()) {
+            buttonPlus.setEnabled(true);
+        }
+        else if(currentValue == maxValue && buttonPlus.isEnabled()) {
+            buttonPlus.setEnabled(false);
+        }
     }
 }

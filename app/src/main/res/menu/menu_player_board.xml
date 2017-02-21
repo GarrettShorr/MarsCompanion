@@ -15,4 +15,11 @@
         android:title="Build Ocean"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/menu_spend_money"
+        android:icon="@drawable/money"
+        android:orderInCategory="80"
+        android:title="Spend Mega Credits"
+        app:showAsAction="ifRoom" />
+
 </menu>
